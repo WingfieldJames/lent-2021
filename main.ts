@@ -4,6 +4,7 @@ controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.over(false)
 })
+let projectile2: Sprite = null
 let Projectile_1: Sprite = null
 let Log_Speed = 0
 let Duck: Sprite = null
@@ -156,9 +157,6 @@ game.onUpdate(function () {
         Duck.vy = 0
     }
 })
-game.onUpdateInterval(5000, function () {
-	
-})
 game.onUpdateInterval(2000, function () {
     Log_Speed = -100 - game.runtime() / 200
     Projectile_1 = sprites.createProjectileFromSide(img`
@@ -205,4 +203,33 @@ game.onUpdateInterval(2000, function () {
         `, Log_Speed, 0)
     Projectile_1.y = 80
     info.changeScoreBy(1)
+})
+game.onUpdateInterval(1000, function () {
+    projectile2 = sprites.createProjectileFromSide(img`
+        ........................
+        ..............fff.......
+        .............f2fffff....
+        ...........ff22eeeeeff..
+        ..........ff222eeeeeeff.
+        ..........feeeefffeeeef.
+        .........fe2222eeefffff.
+        .........f2efffff222efff
+        ..cc.....fffeeefffffffff
+        ..cdcc...fee44fbbe44efef
+        ..ccddcc..feddfbb4d4eef.
+        ....cdddceefddddd4eeef..
+        .....ccdcddee2222222f...
+        ......cccdd44e544444f...
+        .........eeeeffffffff...
+        .............ff...fff...
+        ........................
+        ........................
+        ........................
+        ........................
+        ........................
+        ........................
+        ........................
+        ........................
+        `, Log_Speed, -1)
+    projectile2.y = 100
 })
